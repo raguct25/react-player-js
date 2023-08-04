@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Video Player</title>
+    <script src="https://unpkg.com/react-player/dist/ReactPlayer.standalone.js"></script>
+    <script src="./video.js"></script>
+    <link rel="stylesheet" href="./video.css" />
+  </head>
+  <body>
+    <h1 class="header-text">Welcome React Player Page</h1>
+
+    <!-- <iframe
+      src="https://www.youtube.com/embed/7PIji8OubXU"
+      width="100"
+      height="100"
+      frameborder="0"
+      id="iframe-id"
+    ></iframe> -->
+
+    <div class="video-layout" id="video-layout">
+      <a href="https://www.youtube.com/">Youtube</a>
+      <div class="inner-video-layout" id="youtube-container"></div>
+      <a href="https://vimeo.com/">Vimeo</a>
+      <div class="inner-video-layout" id="vimeo-container"></div>
+      <a href="https://www.twitch.tv/">Twitch</a>
+      <div class="inner-video-layout" id="twitch-container"></div>
+    </div>
+
+    <script>
+      const youtubeContainer = document.getElementById("youtube-container");
+      const vimeoContainer = document.getElementById("vimeo-container");
+      const twitchContainer = document.getElementById("twitch-container");
+
+      const youtube_url = "https://www.youtube.com/watch?v=7PIji8OubXU";
+      const vimeo_url = "https://vimeo.com/845854409";
+      const twitch_url = "https://www.twitch.tv/leekbeats";
+
+      const config = {
+        youtube: {
+          playerVars: { showinfo: 0, modestbranding: 1, rel: 0, disablekb: 0 },
+        },
+      };
+
+      renderReactPlayer(youtubeContainer, {
+        url: youtube_url,
+        playing: false,
+        muted: true,
+        controls: false,
+        loop: true,
+        config,
+      });
+      renderReactPlayer(vimeoContainer, {
+        url: vimeo_url,
+        playing: false,
+        muted: true,
+        controls: false,
+        loop: true,
+      });
+      renderReactPlayer(twitchContainer, {
+        url: twitch_url,
+        playing: false,
+        muted: true,
+        controls: true,
+        loop: true,
+      });
+    </script>
+  </body>
+</html>
+
+<!-- https://developers.google.com/youtube/player_parameters#release_notes_08_23_2018 -->
